@@ -46,7 +46,7 @@ def lenfromlinecalc(u,v):
     return math.hypot(n[0],n[1])
 
 def reward_function(params):
-    trackwidth=params['track_width']
+    bounds=(params['track_width'])/3
     waypoints=params['waypoints']
     closest_waypoints=params['closest_waypoints']
     heading=params['heading']
@@ -63,18 +63,18 @@ def reward_function(params):
     # reward-=(1.2-speed)
     u=[(frontwaypoint[0]-rearwaypoint[0]),(frontwaypoint[1]-rearwaypoint[1])]
     agent=[(frontwaypoint[0]-x), (frontwaypoint[1]-y)]
-    angle=math.atan2(u[1],u[0])
-    anglediff=abs(heading-angle)
-    # if anglediff>45:
-    penalty=anglediff/70
-    if penalty>1:
-        penalty=1
-    reward+=(1-penalty)
-    # return reward
-    # else:
+#     angle=math.atan2(u[1],u[0])
+#     anglediff=abs(heading-angle)
+#     # if anglediff>45:
+#     penalty=anglediff/70
+#     if penalty>1:
+#         penalty=1
+#     reward+=(1-penalty)
+#     # return reward
+#     # else:
     norm=lenfromlinecalc(u,agent)
-    bonus=((trackwidth/2)-norm)
-    if norm>(trackwidth/2):
+    bonus=1*((bounds-norm)/bounds)
+    if norm>(bounds):
         bonus=0
     reward+=bonus
     return reward
