@@ -46,7 +46,7 @@ def lenfromlinecalc(u,v):
     return math.hypot(n[0],n[1])
 
 def reward_function(params):
-    bounds=(params['track_width'])/3
+    bounds=(params['track_width'])/2
     waypoints=params['waypoints']
     closest_waypoints=params['closest_waypoints']
     heading=params['heading']
