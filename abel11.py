@@ -56,8 +56,8 @@ def reward_function(params):
     # speed=params['speed']
     reward = 1e-3
     max=len(waypoints)
-    frontwaypoint=waypoints[indexer(max, closest_waypoints[1]+4)]
-    rearwaypoint=waypoints[indexer(max, closest_waypoints[0]-4)]
+    frontwaypoint=waypoints[indexer(max, closest_waypoints[1]+3)]
+    rearwaypoint=waypoints[indexer(max, closest_waypoints[0]-3)]
     if progress ==  100:
         reward+=100
     # reward-=(1.2-speed)
